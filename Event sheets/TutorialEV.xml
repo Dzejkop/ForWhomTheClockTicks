@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>TutorialEV</name>
+    <events>
+        <event-block sid="1526722836376135">
+            <conditions>
+                <condition behavior="Fade" id="0" name="On fade out finished" sid="4162014025908909" type="howToDoWrong" />
+            </conditions>
+            <actions>
+                <action behavior="Fade" id="1" name="Start fade" sid="2130233541347235" type="howToDoRight" />
+            </actions>
+        </event-block>
+        <event-block sid="1650160088018297">
+            <conditions>
+                <condition behavior="Fade" id="0" name="On fade out finished" sid="3591340580824331" type="howToDoRight" />
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="2008302160837467" type="System">
+                    <param id="0" name="Layout">Gameplay</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8932361172719636">
+            <conditions>
+                <condition id="0" name="On click" sid="7471075208711617" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="4278895163815178" type="System">
+                    <param id="0" name="Layout">Gameplay</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

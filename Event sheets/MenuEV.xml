@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>MenuEV</name>
+    <events>
+        <include>MuteButtonEV</include>
+        <include>ControlsEV</include>
+        <event-block sid="5466172697268002">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="9245838705005647" type="System" />
+            </conditions>
+            <actions>
+                <action id="2" name="Stop" sid="6105741819392727" type="Start" />
+                <action id="5" name="Set web font" sid="8592790898186901" type="StartText">
+                    <param id="0" name="Family name">&quot;cinzelregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1119475294313884">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="1837049768029131" type="System" />
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="5399142001610582" type="muteSprite">
+                    <param id="0" name="Instance variable">clicked</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2274757573574535">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="6237312231809618" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">Start</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="6" name="Set speed" sid="4618627867581059" type="Start">
+                    <param id="0" name="Speed">24</param>
+                </action>
+                <action id="3" name="Start" sid="616254477674447" type="Start">
+                    <param id="0" name="From">0</param>
+                </action>
+                <action behavior="Fade" id="1" name="Start fade" sid="2067240337594273" type="MenuFade" />
+            </actions>
+        </event-block>
+        <event-block sid="9386486357564973">
+            <conditions>
+                <condition id="-10" name="Compare opacity" sid="6378149787898449" type="MenuFade">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="Opacity">100</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="4896784829598548" type="System">
+                    <param id="0" name="Layout">Tutorial</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

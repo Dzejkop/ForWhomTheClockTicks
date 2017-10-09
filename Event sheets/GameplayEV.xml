@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>GameplayEV</name>
+    <events>
+        <include>MuteButtonEV</include>
+        <variable constant="0" name="EveInterval" sid="6856040217013507" static="0" type="number">120</variable>
+        <variable constant="0" name="GameState" sid="8603370990974035" static="0" type="text">&quot;inactive&quot;</variable>
+        <variable constant="0" name="Lives" sid="8826361522620213" static="0" type="number">5</variable>
+        <variable constant="0" name="Score" sid="4104726855862394" static="0" type="number">0</variable>
+        <include>ControlsEV</include>
+        <event-block sid="3034940660947024">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="6627894186416165" type="Apple">
+                    <param id="0" name="Object">AppleLeftCatcher</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="7596743746807089" type="Apple" />
+                <action id="-11" name="Subtract from" sid="3244146211060295" type="System">
+                    <param id="0" name="Variable">Lives</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action behavior="Fade" id="1" name="Start fade" sid="3325906459866751" type="AppleLeftIndicator" />
+            </actions>
+        </event-block>
+        <event-block sid="1773982861805199">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="2529495128112726" type="Apple">
+                    <param id="0" name="Object">AppleRightCatcher</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="1653638037985912" type="Apple" />
+                <action behavior="Fade" id="1" name="Start fade" sid="8129120464982447" type="AppleRightIndicator" />
+                <action id="-10" name="Add to" sid="2514632972733488" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1607164936820473">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="6964059799449807" type="Apple">
+                    <param id="0" name="Object">AppleBottomCatcher</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="7264976131442125" type="Apple" />
+                <action behavior="Fade" id="1" name="Start fade" sid="4860063305836198" type="AppleBottomIndicator" />
+                <action id="-10" name="Add to" sid="8806878513943986" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3889786876433656">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="7103153049202167" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="271295626893327" type="Score">
+                    <param id="0" name="Text">Score</param>
+                </action>
+                <action id="0" name="Set text" sid="5870559986791769" type="Lives">
+                    <param id="0" name="Text">Lives</param>
+                </action>
+                <action id="-13" name="Set boolean" sid="6768464954881393" type="muteSprite">
+                    <param id="0" name="Instance variable">clicked</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-11" name="Subtract from" sid="655580698478725" type="System">
+                    <param id="0" name="Variable">EveInterval</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3527131282800351">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="8704520255973817" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set web font" sid="1955557502594141" type="Score">
+                    <param id="0" name="Family name">&quot;cinzelregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action id="5" name="Set web font" sid="9003204899434517" type="ScoreIndicator">
+                    <param id="0" name="Family name">&quot;cinzelregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action disabled="1" id="0" name="Play" sid="6457723763035442" type="Music">
+                    <param id="0" name="Audio file">minuet</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action behavior="Physics" id="11" name="Create revolute joint" sid="9798280337855186" type="EveArm">
+                    <param id="0" name="This image point">1</param>
+                    <param id="1" name="Object">EveTorso</param>
+                </action>
+                <action behavior="Physics" id="10" name="Create distance joint" sid="9956617948838173" type="EveArm">
+                    <param id="0" name="This image point">2</param>
+                    <param id="1" name="Object">EveArmHolder</param>
+                    <param id="2" name="That image point">0</param>
+                    <param id="3" name="Damping ratio">1</param>
+                    <param id="4" name="Spring frequency">2</param>
+                </action>
+                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="2037362736483172" type="EveTorso">
+                    <param id="0" name="Object">Apple</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="517475488210822" type="EveTorso">
+                    <param id="0" name="Object">GreenApple</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="7011413378033779" type="EveTorso">
+                    <param id="0" name="Object">RedApple</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="64328921027843" type="EveTorso">
+                    <param id="0" name="Object">RottenApple</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="2069753353574266" type="EveArm">
+                    <param id="0" name="Object">RottenApple</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="6075171535741739" type="EveArm">
+                    <param id="0" name="Object">Apple</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="8525431025869403" type="EveArm">
+                    <param id="0" name="Object">GreenApple</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="5312851967198287" type="EveArm">
+                    <param id="0" name="Object">RedApple</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="1108334463185521" type="System">
+                    <param id="0" name="Variable">GameState</param>
+                    <param id="1" name="Value">&quot;active&quot;</param>
+                </action>
+                <action id="-9" name="Set value" sid="3640284424879821" type="System">
+                    <param id="0" name="Variable">EveInterval</param>
+                    <param id="1" name="Value">120</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1210726150035934">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="2180040004097204" type="System" />
+                <condition id="-14" name="Compare variable" sid="4771980143015909" type="System">
+                    <param id="0" name="Variable">GameState</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">&quot;active&quot;</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="1393496570343643" type="System">
+                    <param id="0" name="Variable">EveInterval</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="8579249588166405" type="System">
+                    <param id="0" name="Variable">EveInterval</param>
+                    <param id="1" name="Value">120</param>
+                </action>
+                <action behavior="Physics" id="4" name="Apply impulse towards position" sid="7248221060419817" type="EveArm">
+                    <param id="0" name="Impulse">10</param>
+                    <param id="1" name="X">200</param>
+                    <param id="2" name="Y">0</param>
+                    <param id="3" name="Image point">2</param>
+                </action>
+                <action id="-16" name="Wait" sid="3106620839355754" type="System">
+                    <param id="0" name="Seconds">random(0.065, 0.15)</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="6295143586088038" type="EveArm">
+                    <param id="0" name="Object">Apple</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">2</param>
+                </action>
+                <action id="4" name="Set animation" sid="6543630034509868" type="Apple">
+                    <param id="0" name="Animation">choose(choose(&quot;Default&quot;, &quot;Green&quot;), choose(&quot;Rotten&quot;, &quot;Red&quot;))</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action behavior="Physics" id="4" name="Apply impulse towards position" sid="4207635746498844" type="Apple">
+                    <param id="0" name="Impulse">-5</param>
+                    <param id="1" name="X">EveArm.ImagePointX(1)</param>
+                    <param id="2" name="Y">EveArm.ImagePointY(1)</param>
+                    <param id="3" name="Image point">0</param>
+                </action>
+                <action id="0" name="Play" sid="1924322385219918" type="Music">
+                    <param id="0" name="Audio file">60009__qubodup__swosh-22</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9831790980134081">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="2134695480315043" type="System" />
+                <condition id="-7" name="Compare instance variable" sid="7518358105134122" type="heart">
+                    <param id="0" name="Instance variable">index</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">Lives</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="2516112843101839" type="heart">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1927820079990868">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="4417755917524349" type="System">
+                    <param id="0" name="Variable">Lives</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="8740815180391384" type="System">
+                    <param id="0" name="Layout">GameOver</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
